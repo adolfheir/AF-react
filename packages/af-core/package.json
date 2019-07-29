@@ -1,12 +1,12 @@
 {
-  "name": "@cyh/af-core",
+  "name": "af-core",
   "version": "0.0.0",
   "description": "af core framework",
   "keywords": [
     "af",
     "react"
   ],
-  "author": "wb-cyh578854 <wb-cyh578854@alibaba-inc.com>",
+  "author": "adolfheir <dhz7481234567@gmail.com>",
   "homepage": "https://github.com/adolfheir/AF-react#readme",
   "license": "MIT",
   "main": "lib/af-core.js",
