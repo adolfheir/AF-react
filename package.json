@@ -1,7 +1,23 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "watch": "lerna run watch",
+    "unlink": "lerna run unlink",
+    "build": "lerna run build",
+    "publish": "lerna publish",
+    "bootstrap": "lerna bootstrap --stream --hoist"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-preset-minify": "^0.5.0",
+    "cross-env": "^5.2.0",
     "lerna": "^3.15.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
   }
 }

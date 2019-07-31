@@ -9,7 +9,8 @@
   "author": "adolfheir <dhz7481234567@gmail.com>",
   "homepage": "https://github.com/adolfheir/AF-react#readme",
   "license": "MIT",
-  "main": "lib/af-core.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -25,9 +26,15 @@
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-core node ../../scripts/build.js ",
+    "watch": "npm link && cross-env NODE_ENV=development MODULE_NAME=af-core node ../../scripts/build.js ",
+    "unlink": "npm unlink",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
+  },
+  "dependencies": {
+    "invariant": "^2.2.4"
   }
 }

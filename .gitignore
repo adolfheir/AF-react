@@ -113,6 +113,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# npm lock file
+package-lock.json
+
 # dotenv environment variables file
 .env
 
