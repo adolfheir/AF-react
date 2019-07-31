@@ -35,6 +35,7 @@
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
   "dependencies": {
-    "invariant": "^2.2.4"
+    "invariant": "^2.2.4",
+    "is-plain-object": "^3.0.0"
   }
 }

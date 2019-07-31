@@ -4,16 +4,18 @@ const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = function (api) {
   api.cache(true);
-  let plugins = [];
+  let plugins = [
+    ["@babel/plugin-proposal-class-properties"]//for static prop
+  ];
   let presets = [
     [
       "@babel/preset-env",
       {
-        loose: true,
-        targets: {
-          browsers: ['last 2 versions', 'ie >= 9'],
-          node: 'current'
-        },
+        // loose: true,
+        // targets: {
+        //   browsers: ['last 2 versions', 'ie >= 9'],
+        //   node: 'current'
+        // },
         modules: isEsModule ? false : 'commonjs'
       },
     ],
