@@ -22,7 +22,16 @@ export default class Application {
    * 添加插件
    * @param {*} plugin
    */
-  use(plugin) {
+  use(plugin, options) {
+    if (typeof plugin === 'function') {
+      try {
+        plugin = plugin.bind(null, this)
+        plugin = plugin(options)
+      } catch (error) {
+        this.onError(error)
+        return
+      }
+    }
     invariant(isPlainObject(plugin), 'plugin.use: plugin should be plain object');
     let hasSameNamePlugin = this.plugins.find(p => p.namespace != null && p.namespace === options.namespace)
     if (hasSameNamePlugin) { //如果存在同名插件 则不使用该插件
@@ -47,7 +56,7 @@ export default class Application {
       return plugin.namespace === namespace
     })
     if (index < 0) { //如果不存在同名插件 则返回
-      invariant(false, `the plugin '${namespace}' is not existed `);
+      invariant(false, `plugin.remove:the plugin '${namespace}' is not existed `);
       return
     } else {
       const plugin = this.plugins[idx]

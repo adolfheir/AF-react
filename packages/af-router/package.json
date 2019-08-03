@@ -1,0 +1,31 @@
+{
+  "name": "af-router",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "keywords": [
+    "react",
+    "router",
+    "af"
+  ],
+  "author": "adolfheir <1428899467@qq.com>",
+  "homepage": "https://github.com/adolfheir/AF-react#readme",
+  "license": "MIT",
+  "main": "lib/react-router.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adolfheir/AF-react.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/adolfheir/AF-react/issues"
+  }
+}
