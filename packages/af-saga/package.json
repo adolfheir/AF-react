@@ -1,14 +1,10 @@
 {
-  "name": "af-core",
+  "name": "af-saga",
   "version": "0.0.1",
-  "description": "af core framework",
-  "keywords": [
-    "af",
-    "react"
-  ],
-  "author": "adolfheir <dhz7481234567@gmail.com>",
+  "description": "> TODO: description",
+  "author": "adolfheir <1428899467@qq.com>",
   "homepage": "https://github.com/adolfheir/AF-react#readme",
-  "license": "MIT",
+  "license": "ISC",
   "main": "lib/index.js",
   "module": "es/index.js",
   "directories": {
@@ -18,24 +14,22 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production MODULE_NAME=af-core node ../../scripts/build.js ",
-    "watch": "npm link && cross-env NODE_ENV=development MODULE_NAME=af-core node ../../scripts/build.js ",
-    "unlink": "npm unlink",
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-saga node ../../scripts/build.js ",
+    "watch": "npx yarn link && cross-env NODE_ENV=development MODULE_NAME=af-saga node ../../scripts/build.js ",
+    "unlink": "npx yarn unlink",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
   "dependencies": {
+    "af-core": "^0.0.1",
     "invariant": "^2.2.4",
-    "is-plain-object": "^3.0.0"
+    "redux-saga": "^1.0.5"
   }
 }

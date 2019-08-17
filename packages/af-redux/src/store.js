@@ -33,11 +33,10 @@ export default class Store {
     const {
       initialState,
     } = this.options
-    const enhancers = this.app.get
 
     //todo：找一个地方存中间件和enhancer
-    let extraMiddlewares = this.app.getExtra('middlewares') || []
-    const extraEnhancers = this.app.getExtra('enhancers') || []
+    const extraMiddlewares = this.app.getInject('_middlewares') || []
+    const extraEnhancers = this.app.getInject('_enhancers') || []
 
     const enhancers = [
       applyMiddleware(...flatten(extraMiddlewares)),
@@ -58,12 +57,11 @@ export default class Store {
     Object.assign(this, store)
   }
 
-
   getReducer() {
-    let { initialReducers } = this.this.props
+    let { initialReducers } = this.options
     let extraReducers = [] //to do find all reducers in _model
 
-    let reducerEnhancer = app.getExtra('reducerEnhancer') || returnSelf
+    let reducerEnhancer = this.app.getInject('_reducerEnhancer')[0] || returnSelf
     return reducerEnhancer(
       reduceReducers(
         combineReducers({

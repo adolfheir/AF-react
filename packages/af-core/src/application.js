@@ -1,21 +1,35 @@
 import invariant from 'invariant'
-import { isPlainObject } from "./utils"
+import { isPlainObject, uuid } from "./utils"
 import Plugin from "./plugin"
+
 export default class Application {
   isStarted = false //启动状态
-  plugins = [] // 插件集合
 
-  _inject = {} //set any data
+  _plugins = [] //插件集合
+  _inject = {} //default _inject data
 
   /**
    * 向应用程序成员中注入数据
-   * @param {object} obj - 注入对象
+   * @param {any} data - 注入数据
    * @param {string} [member] - 注入的成员
    */
-  inject(obj, member = '_inject') {
-    Object.keys(obj).forEach(key => {
-      this[member][key] = obj[key]
-    })
+  inject(data, member = '_inject') {
+    // 注入数据key必须下划线开头 区分extends数据
+    invariant(
+      typeof (member) === "string" && member.startsWith("_"),
+      `[app.inject] member should be string and must startsWith _ `,
+    );
+    if (!this[member]) { this[member] = [] }
+
+    this[menubar].push(data)
+  }
+
+  getInject(member) {
+    invariant(
+      typeof (member) === "string" && member.startsWith("_"),
+      `[app.getInject] member should be string and must startsWith _ `,
+    );
+    return this[menubar] || []
   }
 
   /**
@@ -33,14 +47,18 @@ export default class Application {
       }
     }
     invariant(isPlainObject(plugin), 'plugin.use: plugin should be plain object');
-    let hasSameNamePlugin = this.plugins.find(p => p.namespace != null && p.namespace === options.namespace)
+    //如果没有namespace 给个默认的namespace
+    if (!plugin.namespace) { plugin.namespace = uuid() }
+    //如果存在同名插件 则报错
+    let hasSameNamePlugin = this._plugins.find(p => p.namespace != null && p.namespace === options.namespace)
     if (hasSameNamePlugin) { //如果存在同名插件 则不使用该插件
       invariant(false, `it has same name plugin '${plugin.namespace}' in this instance`);
       return
     } else {
+      //如果没有提供构造函数 则使用默认构造函数
       let Ctor = plugin.ctor || Plugin
       plugin = new Ctor(this, plugin)
-      this.plugins.push(plugin)
+      this._plugins.push(plugin)
       if (this.started) {
         plugin.mount()
       }
@@ -52,17 +70,31 @@ export default class Application {
    * @param {*} namespace 实例名称
    */
   remove(namespace) {
-    const index = this.plugins.findIndex(plugin => {
+    const index = this._plugins.findIndex(plugin => {
       return plugin.namespace === namespace
     })
     if (index < 0) { //如果不存在同名插件 则返回
       invariant(false, `plugin.remove:the plugin '${namespace}' is not existed `);
       return
     } else {
-      const plugin = this.plugins[idx]
+      const plugin = this._plugins[idx]
       plugin.unmount()
-      this.plugins.splice(index, 1)
+      this._plugins.splice(index, 1)
     }
+  }
+
+  /**
+   * 获取所有的event hooks
+   * @param {*} name event name
+   */
+  getHook(name) {
+    let handlers = [] //get all hooks
+    this._plugins.forEach((plugin) => {
+      if (plugin.hooks && plugin.hooks[name]) {
+        handlers.push(plugin.hooks[name])
+      }
+    })
+    return handlers
   }
 
   /**
@@ -71,12 +103,7 @@ export default class Application {
    * @param  {...any} payload 传递参数
    */
   emit(name, ...payload) {
-    let handlers = [] //get all hooks
-    this.plugins.forEach((plugin) => {
-      if (plugin.hooks && plugin.hooks[name]) {
-        handlers.push(plugin.hooks[name])
-      }
-    })
+    let handlers = this.getHook(name)
     if (handlers.length) {
       for (const handler of handlers) {
         const ret = handler(...payload)
@@ -97,7 +124,7 @@ export default class Application {
       if (typeof err === 'string') {
         err = new Error(err)
       }
-      this.emit('error', err)
+      this.emit('onError', err)
     }
   }
 
@@ -108,7 +135,7 @@ export default class Application {
   start(options = {}) {
     if (this.isStarted) { return }
     this.emit('beforeStart', { app: this, options })
-    this.plugins.forEach(plugin => {
+    this._plugins.forEach(plugin => {
       if (!plugin.mounted) {
         plugin.mount()
       }

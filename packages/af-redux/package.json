@@ -23,9 +23,18 @@
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-redux node ../../scripts/build.js ",
+    "watch": "npx yarn link && cross-env NODE_ENV=development MODULE_NAME=af-redux node ../../scripts/build.js ",
+    "unlink": "npx yarn unlink",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
+  },
+  "dependencies": {
+    "af-core": "^0.0.1",
+    "flatten": "^1.0.2",
+    "reduce-reducers": "^1.0.4",
+    "redux": "^4.0.4"
   }
 }

@@ -5,7 +5,6 @@ import invariant from 'invariant'
  */
 export default class Plugin {
   namespace
-  meta = { family: '', type: 'plugin', feature: [] }
   hooks = {}
   extras = {}
   tasks = {}
@@ -38,7 +37,7 @@ export default class Plugin {
   runTask(name) {
     Object.entries(this.tasks).forEach(([key, task]) => {
       const un = task(this.app)
-      this._untasks[key] = un
+      this._untasks[key] = un || function () { }
     })
   }
 

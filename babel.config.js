@@ -20,7 +20,7 @@ module.exports = function (api) {
       },
     ],
     "@babel/preset-react"];
-  if (!isDev) presets.unshift("minify")
+  // if (!isDev) presets.unshift("minify")
   return {
     presets,
     plugins

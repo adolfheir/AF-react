@@ -23,9 +23,19 @@
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-render node ../../scripts/build.js ",
+    "watch": "npx yarn link && cross-env NODE_ENV=development MODULE_NAME=af-render node ../../scripts/build.js ",
+    "unlink": "npx yarn unlink",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
+  },
+  "dependencies": {
+    "af-core": "^0.0.1",
+    "invariant": "^2.2.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0"
   }
 }

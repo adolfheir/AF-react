@@ -23,6 +23,12 @@ const doExec = (command, extraEnv) => {
   return func
 }
 
+console.log(`\nBuilding ES modules (${moduleNmae}) ...`)
+
+doExec(`babel src --out-dir es --config-file ${babelConfigPath} ${isDev ? "--watch" : ""}`, {
+  BABEL_ENV: 'es',
+  NODE_ENV: process.env.NODE_ENV
+})
 
 console.log(`Building CommonJS modules (${moduleNmae}) ...`)
 
@@ -31,9 +37,4 @@ doExec(`babel src --out-dir lib --config-file ${babelConfigPath} ${isDev ? "--wa
   NODE_ENV: process.env.NODE_ENV
 })
 
-console.log(`\nBuilding ES modules (${moduleNmae}) ...`)
 
-doExec(`babel src --out-dir es --config-file ${babelConfigPath} ${isDev ? "--watch" : ""}`, {
-  BABEL_ENV: 'es',
-  NODE_ENV: process.env.NODE_ENV
-})
