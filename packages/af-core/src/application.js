@@ -20,8 +20,8 @@ export default class Application {
       `[app.inject] member should be string and must startsWith _ `,
     );
     if (!this[member]) { this[member] = [] }
-
-    this[menubar].push(data)
+    console.log(this[menubar])
+    this[member].push(data)
   }
 
   getInject(member) {
@@ -140,7 +140,7 @@ export default class Application {
         plugin.mount()
       }
     })
-    this.emit('start', this)
+    this.emit('afterStarted', this)
     this.isStarted = true
   }
 }

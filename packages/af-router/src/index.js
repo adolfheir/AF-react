@@ -1,6 +1,6 @@
 import queryString from 'query-string'
 import { createBrowserHistory, createMemoryHistory, createHashHistory } from 'history';
-
+import * as routerRedux from 'connected-react-router';
 
 export default function (app, options = {}) {
   const {

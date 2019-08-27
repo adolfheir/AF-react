@@ -6,7 +6,7 @@
     "unlink": "lerna run unlink",
     "build": "lerna run build",
     "publish": "lerna publish",
-    "bootstrap": "lerna bootstrap --stream --hoist"
+    "bootstrap": "lerna bootstrap --hoist"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

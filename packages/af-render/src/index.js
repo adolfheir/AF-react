@@ -16,7 +16,7 @@ export default function (app) {
        */
       render: function () {
         let [
-          Content = null, //react 组件
+          App = null, //react 组件
           container, //dom 容器
         ] = arguments
 
@@ -42,10 +42,10 @@ export default function (app) {
         const store = app.store
         let provider = (
           <Provider store={store}>
-            {Content}
+            {App}
           </Provider>
         );
-        console.log("container", container, provider)
+        console.log("container", container, provider, App)
 
         // If has container, render; else, return react component
         if (container) {

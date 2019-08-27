@@ -1,10 +1,10 @@
 {
-  "name": "af-redux",
+  "name": "af-core",
   "version": "0.0.1",
-  "description": "a redux plugin for af",
+  "description": "af core framework",
   "keywords": [
     "af",
-    "redux"
+    "react"
   ],
   "author": "adolfheir <dhz7481234567@gmail.com>",
   "homepage": "https://github.com/adolfheir/AF-react#readme",
@@ -18,25 +18,24 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production MODULE_NAME=af-redux node ../../scripts/build.js ",
-    "watch": "npx yarn link && cross-env NODE_ENV=development MODULE_NAME=af-redux node ../../scripts/build.js ",
-    "unlink": "npx yarn unlink",
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-core node ../../scripts/build.js ",
+    "watch": "npm link && cross-env NODE_ENV=development MODULE_NAME=af-core node ../../scripts/build.js ",
+    "unlink": "npm unlink",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
   "dependencies": {
-    "af-core": "^0.0.1",
-    "connected-react-router": "^6.5.2",
-    "flatten": "^1.0.2",
-    "react-redux": "^6.0.0",
-    "reduce-reducers": "^1.0.4",
-    "redux": "^4.0.4"
+    "invariant": "^2.2.4",
+    "is-plain-object": "^3.0.0"
   }
 }

@@ -49,6 +49,7 @@ export default class Plugin {
   }
 
   runExtend() {
+    console.log("run extends", this.extends)
     if (!this.extends) {
       return
     }
