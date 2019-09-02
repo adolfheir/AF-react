@@ -41,7 +41,7 @@ export default class Store {
     let extraEnhancers = this.app.getInject('_enhancers') || []
 
     if (this.app.history) {
-      extraMiddlewares = [routerMiddleware(history), ...extraMiddlewares]
+      extraMiddlewares = [routerMiddleware(this.app.history), ...extraMiddlewares]
     }
 
     const enhancers = [
@@ -67,7 +67,7 @@ export default class Store {
     let { initialReducers } = this.options
     let extraReducers = {} //to do find all reducers in _model
     if (this.app.history) {
-      extraReducers = { router: connectRouter(history), extraReducers }
+      extraReducers = { router: connectRouter(this.app.history), extraReducers }
     }
 
     //get models
@@ -76,7 +76,6 @@ export default class Store {
       // Object.entries(model["reducers"] || {}).forEach(([key, value]) => {
       //   memo[key] = value
       // })
-      console.log("model", model)
       memo[model["namespace"]] = createReducer(model["state"] || {}, model["reducers"] || {})
       return memo
     }, extraReducers)

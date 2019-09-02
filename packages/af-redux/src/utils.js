@@ -30,14 +30,12 @@ export function prefixNamespace(model) {
   if (effects) {
     model.effects = prefix(effects, namespace, 'effect');
   }
-  console.log("new model", model)
   return model;
 }
 
 
 export function createReducer(initialState, handlers) {
   return function reducer(state = { ...initialState }, action) {
-    console.log("action", action, handlers)
     if (handlers.hasOwnProperty(action.type)) {
       return handlers[action.type](state, action)
     } else {

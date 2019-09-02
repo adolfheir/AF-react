@@ -24,8 +24,9 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production MODULE_NAME=af-redux node ../../scripts/build.js ",
-    "watch": "npx yarn link && cross-env NODE_ENV=development MODULE_NAME=af-redux node ../../scripts/build.js ",
-    "unlink": "npx yarn unlink",
+    "watch": "cross-env NODE_ENV=development MODULE_NAME=af-redux node ../../scripts/build.js ",
+    "unlink": "yarn unlink",
+    "link": "yarn link",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

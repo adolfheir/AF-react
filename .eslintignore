@@ -1,0 +1,7 @@
+## eslint disable files
+node_modules/
+lib/
+es/
+dist/
+__tests__/
+

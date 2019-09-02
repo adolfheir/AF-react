@@ -34,7 +34,7 @@ export default class Plugin {
     this.mounted = false
   }
 
-  runTask(name) {
+  runTask() {
     Object.entries(this.tasks).forEach(([key, task]) => {
       const un = task(this.app)
       this._untasks[key] = un || function () { }
@@ -49,7 +49,6 @@ export default class Plugin {
   }
 
   runExtend() {
-    console.log("run extends", this.extends)
     if (!this.extends) {
       return
     }
@@ -63,7 +62,7 @@ export default class Plugin {
     if (!this.extends) {
       return
     }
-    Object.entries(this.extends).forEach(([key, value]) => {
+    Object.keys(this.extends).forEach(key=>{
       delete this.app[key]
     })
   }

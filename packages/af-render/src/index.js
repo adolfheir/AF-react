@@ -45,7 +45,6 @@ export default function (app) {
             {App}
           </Provider>
         );
-        console.log("container", container, provider, App)
 
         // If has container, render; else, return react component
         if (container) {

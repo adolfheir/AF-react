@@ -28,8 +28,8 @@ export default function (app, options = {}) {
       ...injectReducer,
       ...m.reducers
     }
-    m.flows = {
-      ...options.effects,
+    m.effects = {
+      ...m.effects,
     }
     m.state = {
       _initialState: m.state,
@@ -42,20 +42,33 @@ export default function (app, options = {}) {
     namespace: "redux",
     hooks: {
       afterStarted: function () {
+        app.emit("beforeReduxStart")
         app._models = [] //存所有的model信息
         app.store = new Store(app, options)
+        app.emit("afterReduxStart")
+
       }
     },
     extends: {
       dispatch: function (...arg) {
-        let { store: { dispatch = () => { } } = {} } = this.app
-        return dispatch(arg)
+        let { store: { dispatch = () => { } } = {} } = app
+        return dispatch(...arg)
       },
       model: function (model) {
+        //初始化未完成 不给注入
+        if (!app.isStarted) {
+          return
+        }
+        //redux
         model = normalize(model)
         const prefixedModel = prefixNamespace({ ...model });
         app.inject(prefixedModel, "_models")
         app.store.updateReducer()
+        //effect
+        if (prefixedModel.effects && app.runSaga && app.creatSaga) {
+          app.runSaga(app.creatSaga(prefixedModel["effects"], prefixedModel, app));
+        }
+
       },
       unModel: function (namespace) {
 

@@ -20,7 +20,6 @@ export default class Application {
       `[app.inject] member should be string and must startsWith _ `,
     );
     if (!this[member]) { this[member] = [] }
-    console.log(this[menubar])
     this[member].push(data)
   }
 
@@ -29,7 +28,7 @@ export default class Application {
       typeof (member) === "string" && member.startsWith("_"),
       `[app.getInject] member should be string and must startsWith _ `,
     );
-    return this[menubar] || []
+    return this[member] || []
   }
 
   /**
@@ -77,7 +76,7 @@ export default class Application {
       invariant(false, `plugin.remove:the plugin '${namespace}' is not existed `);
       return
     } else {
-      const plugin = this._plugins[idx]
+      const plugin = this._plugins[index]
       plugin.unmount()
       this._plugins.splice(index, 1)
     }
