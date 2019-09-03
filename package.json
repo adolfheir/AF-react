@@ -7,7 +7,7 @@
     "unlink": "lerna run unlink",
     "link": "lerna run link",
     "publish": "lerna publish",
-    "bootstrap": "lerna bootstrap --hoist",
+    "bootstrap": "lerna bootstrap",
     "lint": "./node_modules/.bin/eslint --fix packages"
   },
   "devDependencies": {
@@ -23,6 +23,8 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/polyfill": "^7.4.4",
-    "eslint": "^6.3.0"
+    "eslint": "^6.3.0",
+    "react-router-dom": "^5.0.1",
+    "react-router-redux": "^4.0.8"
   }
 }

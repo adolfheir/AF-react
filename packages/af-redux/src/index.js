@@ -46,7 +46,6 @@ export default function (app, options = {}) {
         app._models = [] //存所有的model信息
         app.store = new Store(app, options)
         app.emit("afterReduxStart")
-
       }
     },
     extends: {

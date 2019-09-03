@@ -36,7 +36,9 @@
     "af-core": "^0.0.1",
     "connected-react-router": "^6.5.2",
     "flatten": "^1.0.2",
+    "react": "^16.9.0",
     "react-redux": "^6.0.0",
+    "react-router": "^5.0.1",
     "reduce-reducers": "^1.0.4",
     "redux": "^4.0.4"
   }

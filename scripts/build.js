@@ -9,7 +9,6 @@ const babelConfigPath = path.join(__dirname, '../babel.config.js')
 
 const doExec = (command, extraEnv) => {
   if (isDev) {
-    console.log("is 异步")
     func = exec(command, {
       stdio: 'inherit',
       env: Object.assign({}, process.env, extraEnv)

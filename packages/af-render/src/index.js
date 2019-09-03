@@ -5,6 +5,8 @@ import document from 'global/document';
 import { Provider } from 'react-redux';
 import { isHTMLElement } from "af-core"
 
+export * from 'react-redux';
+
 export default function (app) {
   return {
     namespace: 'render',
@@ -39,20 +41,22 @@ export default function (app) {
           `[app.render] you must start app before render`,
         );
 
-        const store = app.store
+        let store = app["store"]
+
         let provider = (
           <Provider store={store}>
             {App}
           </Provider>
         );
-
         // If has container, render; else, return react component
         if (container) {
           ReactDOM.render(provider, container)
         } else {
           return provider
         }
-      }
+      },
+      // connect: connect,
+
     }
   }
 

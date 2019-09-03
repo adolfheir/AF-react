@@ -12,8 +12,10 @@ export default function (app, options = {}) {
     addLocationQuery(history)
   })
 
+
   return {
     namespace: 'router',
+
     extends: {
       history
     }

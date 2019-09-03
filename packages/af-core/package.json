@@ -36,6 +36,7 @@
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
   "dependencies": {
+    "global": "^4.4.0",
     "invariant": "^2.2.4",
     "is-plain-object": "^3.0.0",
     "uuid": "^3.3.3"
