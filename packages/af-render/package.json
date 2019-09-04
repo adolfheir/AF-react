@@ -1,6 +1,6 @@
 {
   "name": "af-render",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "like react-dom render",
   "keywords": [
     "react",
@@ -32,14 +32,13 @@
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
-
   "dependencies": {
-    "af-core": "^0.0.1",
+    "af-core": "^0.1.0",
     "global": "^4.4.0",
     "invariant": "^2.2.4",
-    "react-dom": "^16.8.6",
-    "redux": "^4.0.4",
     "react": "^16.3.2",
-    "react-redux": "^5.0.7"
+    "react-dom": "^16.8.6",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.4"
   }
 }

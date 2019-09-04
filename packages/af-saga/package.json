@@ -1,6 +1,6 @@
 {
   "name": "af-saga",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "> TODO: description",
   "author": "adolfheir <1428899467@qq.com>",
   "homepage": "https://github.com/adolfheir/AF-react#readme",
@@ -29,7 +29,7 @@
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
   "dependencies": {
-    "af-core": "^0.0.1",
+    "af-core": "^0.1.0",
     "invariant": "^2.2.4",
     "redux-saga": "^1.0.5"
   }

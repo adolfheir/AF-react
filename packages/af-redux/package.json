@@ -1,6 +1,6 @@
 {
   "name": "af-redux",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a redux plugin for af",
   "keywords": [
     "af",
@@ -33,7 +33,7 @@
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
   "dependencies": {
-    "af-core": "^0.0.1",
+    "af-core": "^0.1.0",
     "connected-react-router": "^6.5.2",
     "flatten": "^1.0.2",
     "react": "^16.9.0",

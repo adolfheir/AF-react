@@ -1,6 +1,6 @@
 {
   "name": "af-router",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "> TODO: description",
   "keywords": [
     "react",
@@ -34,7 +34,7 @@
     "url": "https://github.com/adolfheir/AF-react/issues"
   },
   "dependencies": {
-    "af-core": "^0.0.1",
+    "af-core": "^0.1.0",
     "history": "^4.9.0",
     "query-string": "5",
     "react": "^16.9.0"
