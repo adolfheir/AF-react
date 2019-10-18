@@ -1,0 +1,31 @@
+{
+  "name": "af-redux",
+  "version": "0.0.1",
+  "description": "a redux plugin for af",
+  "keywords": [
+    "af",
+    "redux"
+  ],
+  "author": "adolfheir <dhz7481234567@gmail.com>",
+  "homepage": "https://github.com/adolfheir/AF-react#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adolfheir/AF-react.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/adolfheir/AF-react/issues"
+  }
+}

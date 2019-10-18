@@ -1,0 +1,33 @@
+{
+  "name": "@cyh/af-core",
+  "version": "0.0.0",
+  "description": "af core framework",
+  "keywords": [
+    "af",
+    "react"
+  ],
+  "author": "wb-cyh578854 <wb-cyh578854@alibaba-inc.com>",
+  "homepage": "https://github.com/adolfheir/AF-react#readme",
+  "license": "MIT",
+  "main": "lib/af-core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adolfheir/AF-react.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/adolfheir/AF-react/issues"
+  }
+}
