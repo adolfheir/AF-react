@@ -5,8 +5,10 @@ import {
   compose
 } from 'redux'
 import flatten from 'flatten'
-import { returnSelf } from "./utils"
+import { returnSelf, createReducer } from "./utils"
 import reduceReducers from 'reduce-reducers'
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+
 
 export default class Store {
   static defaultOptions = {
@@ -15,7 +17,7 @@ export default class Store {
      */
     initialState: {},
     /**
-     * 开始传进来的出事reduces
+     * 开始传进来的初始reduces
      */
     initialReducers: {},
   }
@@ -31,13 +33,16 @@ export default class Store {
    */
   init() {
     const {
-      initialState,
+      initialState = {},
     } = this.options
-    const enhancers = this.app.get
 
     //todo：找一个地方存中间件和enhancer
-    let extraMiddlewares = this.app.getExtra('middlewares') || []
-    const extraEnhancers = this.app.getExtra('enhancers') || []
+    let extraMiddlewares = this.app.getInject('_middlewares') || []
+    let extraEnhancers = this.app.getInject('_enhancers') || []
+
+    if (this.app.history) {
+      extraMiddlewares = [routerMiddleware(this.app.history), ...extraMiddlewares]
+    }
 
     const enhancers = [
       applyMiddleware(...flatten(extraMiddlewares)),
@@ -58,12 +63,24 @@ export default class Store {
     Object.assign(this, store)
   }
 
-
   getReducer() {
-    let { initialReducers } = this.this.props
-    let extraReducers = [] //to do find all reducers in _model
+    let { initialReducers } = this.options
+    let extraReducers = {} //to do find all reducers in _model
+    if (this.app.history) {
+      extraReducers = { router: connectRouter(this.app.history), extraReducers }
+    }
 
-    let reducerEnhancer = app.getExtra('reducerEnhancer') || returnSelf
+    //get models
+    let modes = this.app._models || []
+    extraReducers = modes.reduce((memo, model) => {
+      // Object.entries(model["reducers"] || {}).forEach(([key, value]) => {
+      //   memo[key] = value
+      // })
+      memo[model["namespace"]] = createReducer(model["state"] || {}, model["reducers"] || {})
+      return memo
+    }, extraReducers)
+
+    let reducerEnhancer = this.app.getInject('_reducerEnhancer')[0] || returnSelf
     return reducerEnhancer(
       reduceReducers(
         combineReducers({

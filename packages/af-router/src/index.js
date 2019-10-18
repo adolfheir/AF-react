@@ -1,11 +1,25 @@
-import queryString from "queryString"
+import queryString from 'query-string'
 import { createBrowserHistory, createMemoryHistory, createHashHistory } from 'history';
-
 
 export default function (app, options = {}) {
   const {
     history = createHashHistory()
   } = options
+
+  addLocationQuery(history)
+
+  history.listen((location) => {
+    addLocationQuery(history)
+  })
+
+
+  return {
+    namespace: 'router',
+
+    extends: {
+      history
+    }
+  }
 
   // add history hook and attach query params
   function addLocationQuery(history) {
@@ -18,18 +32,6 @@ export default function (app, options = {}) {
     app.emit('routeChange', history)
   }
 
-  addLocationQuery(history)
-
-  history.listen((location) => {
-    addLocationQuery(history)
-  })
-
-  return {
-    namespace: 'router',
-    extends: {
-      history
-    }
-  }
 }
 
 export { createBrowserHistory, createMemoryHistory, createHashHistory };

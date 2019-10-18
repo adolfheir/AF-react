@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export let x =1
-=======
 import window from 'global/window'
 import invariant from 'invariant'
 import Application from './application'
@@ -23,6 +20,5 @@ export function resetApp() {
   return createApp()
 }
 
+export * from './utils'
 
-
->>>>>>> e9c03508... feat:初步完成store创建流程

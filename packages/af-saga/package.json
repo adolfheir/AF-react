@@ -1,15 +1,10 @@
 {
-  "name": "af-router",
+  "name": "af-saga",
   "version": "0.1.0",
   "description": "> TODO: description",
-  "keywords": [
-    "react",
-    "router",
-    "af"
-  ],
   "author": "adolfheir <1428899467@qq.com>",
   "homepage": "https://github.com/adolfheir/AF-react#readme",
-  "license": "MIT",
+  "license": "ISC",
   "main": "lib/index.js",
   "module": "es/index.js",
   "directories": {
@@ -24,8 +19,8 @@
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production MODULE_NAME=af-router node ../../scripts/build.js ",
-    "watch": "cross-env NODE_ENV=development MODULE_NAME=af-router node ../../scripts/build.js ",
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-saga node ../../scripts/build.js ",
+    "watch": "cross-env NODE_ENV=development MODULE_NAME=af-saga node ../../scripts/build.js ",
     "unlink": "yarn unlink",
     "link": "yarn link",
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -35,8 +30,7 @@
   },
   "dependencies": {
     "af-core": "^0.1.0",
-    "history": "^4.9.0",
-    "query-string": "5",
-    "react": "^16.9.0"
+    "invariant": "^2.2.4",
+    "redux-saga": "^1.0.5"
   }
 }

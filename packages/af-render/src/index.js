@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 import invariant from 'invariant';
 import document from 'global/document';
 import { Provider } from 'react-redux';
+import { isHTMLElement } from "af-core"
+
+export * from 'react-redux';
 
 export default function (app) {
   return {
@@ -13,11 +16,11 @@ export default function (app) {
        *
        * @param {*} [option={}]
        */
-      render: function (option = {}) {
-        let {
+      render: function () {
+        let [
+          App = null, //react 组件
           container, //dom 容器
-          Content = null //react 组件
-        } = option
+        ] = arguments
 
         // 允许 container 是字符串，然后用 querySelector 找元素
         if (typeof container === 'string') {
@@ -38,20 +41,22 @@ export default function (app) {
           `[app.render] you must start app before render`,
         );
 
-        const store = app.store
-        const provider = (
+        let store = app["store"]
+
+        let provider = (
           <Provider store={store}>
-            <Content />
+            {App}
           </Provider>
         );
-
         // If has container, render; else, return react component
         if (container) {
           ReactDOM.render(provider, container)
         } else {
           return provider
         }
-      }
+      },
+      // connect: connect,
+
     }
   }
 

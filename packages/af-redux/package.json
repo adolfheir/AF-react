@@ -1,6 +1,6 @@
 {
   "name": "af-redux",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a redux plugin for af",
   "keywords": [
     "af",
@@ -23,9 +23,23 @@
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-redux node ../../scripts/build.js ",
+    "watch": "cross-env NODE_ENV=development MODULE_NAME=af-redux node ../../scripts/build.js ",
+    "unlink": "yarn unlink",
+    "link": "yarn link",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
+  },
+  "dependencies": {
+    "af-core": "^0.1.0",
+    "connected-react-router": "^6.5.2",
+    "flatten": "^1.0.2",
+    "react": "^16.9.0",
+    "react-redux": "^6.0.0",
+    "react-router": "^5.0.1",
+    "reduce-reducers": "^1.0.4",
+    "redux": "^4.0.4"
   }
 }

@@ -1,15 +1,16 @@
 {
-  "name": "@cyh/af-core",
-  "version": "0.0.0",
+  "name": "af-core",
+  "version": "0.1.0",
   "description": "af core framework",
   "keywords": [
     "af",
     "react"
   ],
-  "author": "wb-cyh578854 <wb-cyh578854@alibaba-inc.com>",
+  "author": "adolfheir <dhz7481234567@gmail.com>",
   "homepage": "https://github.com/adolfheir/AF-react#readme",
   "license": "MIT",
-  "main": "lib/af-core.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -25,9 +26,19 @@
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-core node ../../scripts/build.js ",
+    "watch": "cross-env NODE_ENV=development MODULE_NAME=af-core node ../../scripts/build.js ",
+    "unlink": "yarn unlink",
+    "link": "yarn link",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "invariant": "^2.2.4",
+    "is-plain-object": "^3.0.0",
+    "uuid": "^3.3.3"
   }
 }

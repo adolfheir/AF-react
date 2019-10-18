@@ -1,6 +1,6 @@
 {
   "name": "af-render",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "like react-dom render",
   "keywords": [
     "react",
@@ -23,9 +23,22 @@
     "url": "git+https://github.com/adolfheir/AF-react.git"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production MODULE_NAME=af-render node ../../scripts/build.js ",
+    "watch": "cross-env NODE_ENV=development MODULE_NAME=af-render node ../../scripts/build.js ",
+    "unlink": "yarn unlink",
+    "link": "yarn link",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/adolfheir/AF-react/issues"
+  },
+  "dependencies": {
+    "af-core": "^0.1.0",
+    "global": "^4.4.0",
+    "invariant": "^2.2.4",
+    "react": "^16.3.2",
+    "react-dom": "^16.8.6",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.4"
   }
 }
