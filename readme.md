@@ -27,4 +27,7 @@ description: 'Github(欢迎+Star): https://github.com/adolfheir/AF-react'
 3。真的这么想找我就邮箱吧：1428899467@qq.com\(不要加qq！\)
 
 
+## 使用示例
+
+https://github.com/adolfheir/AF-cli
 
